@@ -12,6 +12,8 @@ public class GamePiece : MonoBehaviour
 
     public InterpType interpolation = InterpType.SmootherStep;
 
+    Board m_board;
+
     public enum InterpType
     {
         Linear,
@@ -24,6 +26,7 @@ public class GamePiece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Move((int)transform.position.x + 2, (int)transform.position.y, 0.5f);
@@ -33,6 +36,12 @@ public class GamePiece : MonoBehaviour
         {
             Move((int)transform.position.x - 2, (int)transform.position.y, 0.5f);
         }
+        */
+    }
+
+    public void Init(Board board)
+    {
+        m_board = board;
     }
 
     public void SetCoord(int x, int y)
@@ -66,8 +75,12 @@ public class GamePiece : MonoBehaviour
             if (Vector3.Distance(transform.position, destination) < Mathf.Epsilon)
             {
                 reachedDestination = true;
-                transform.position = destination;
-                SetCoord((int)destination.x, (int)destination.y);
+                
+                if (m_board != null)
+                {
+                    m_board.PlaceGamePiece(this, (int)destination.x, (int)destination.y);
+                }
+                
                 break;
             }
 
