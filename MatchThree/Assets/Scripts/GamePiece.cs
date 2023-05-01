@@ -10,23 +10,28 @@ public class GamePiece : MonoBehaviour
 
     bool m_isMoving = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public InterpType interpolation = InterpType.SmootherStep;
+
+    public enum InterpType
     {
-        
-    }
+        Linear,
+        EaseOut,
+        EaseIn,    
+        SmoothStep,
+        SmootherStep
+    };
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Move((int)transform.position.x + 1, (int)transform.position.y, 0.5f);
+            Move((int)transform.position.x + 2, (int)transform.position.y, 0.5f);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Move((int)transform.position.x - 1, (int)transform.position.y, 0.5f);
+            Move((int)transform.position.x - 2, (int)transform.position.y, 0.5f);
         }
     }
 
@@ -71,6 +76,27 @@ public class GamePiece : MonoBehaviour
 
             // calculate the Lerp value
             float t = Mathf.Clamp(elapsedTime / timeToMove, 0, 1);
+
+            // interpolate
+            switch (interpolation)
+            {
+                case InterpType.Linear:
+                    break;
+                case InterpType.EaseOut:
+                    t = Mathf.Sin(t * Mathf.PI * 0.5f);
+                    break;
+                case InterpType.EaseIn:
+                    t = 1 - Mathf.Cos(t * Mathf.PI * 0.5f);
+                    break;
+                case InterpType.SmoothStep:
+                    t = t * t * (3 - 2 * t);
+                    break;
+                case InterpType.SmootherStep:
+                    t = t * t * t * (t * (t * 6 - 15) + 10);
+                    break;
+                default:
+                    break;
+            }
 
             // move the game piece
             transform.position = Vector3.Lerp(startPosition, destination, t);
