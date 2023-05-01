@@ -15,4 +15,38 @@ public class Tile : MonoBehaviour
         yIndex = y;
         m_board = board;
     }
+
+    /// <summary>
+    /// OnMouseDown is called when the user has pressed the mouse button while
+    /// over the GUIElement or Collider.
+    /// </summary>
+    private void OnMouseDown()
+    {
+        if (m_board != null)
+        {
+            m_board.ClickTile(this);
+        }
+    }
+
+    /// <summary>
+    /// Called when the mouse enters the GUIElement or Collider.
+    /// </summary>
+    private void OnMouseEnter()
+    {
+        if (m_board != null)
+        {
+            m_board.DragToTile(this);
+        }
+    }
+
+    /// <summary>
+    /// OnMouseUp is called when the user has released the mouse button.
+    /// </summary>
+    private void OnMouseUp()
+    {
+        if (m_board != null)
+        {
+            m_board.ReleaseTile();
+        }
+    }
 }
