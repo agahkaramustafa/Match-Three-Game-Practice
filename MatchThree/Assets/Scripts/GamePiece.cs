@@ -10,10 +10,9 @@ public class GamePiece : MonoBehaviour
 
     bool m_isMoving = false;
 
-    public InterpType interpolation = InterpType.SmootherStep;
-
     Board m_board;
 
+    public InterpType interpolation = InterpType.SmootherStep;
     public enum InterpType
     {
         Linear,
@@ -21,6 +20,20 @@ public class GamePiece : MonoBehaviour
         EaseIn,    
         SmoothStep,
         SmootherStep
+    };
+
+    public MatchValue matchValue;
+    public enum MatchValue
+    {
+        Yellow,
+        Blue,
+        Magenta,
+        Indigo,
+        Green,
+        Teal,
+        Red,
+        Cyan,
+        Wild
     };
 
     // Update is called once per frame
