@@ -493,14 +493,8 @@ MonoBehaviour:
   - {fileID: 7332014899297271774, guid: 6dc0dbe8f85477b40b5175578e3c3c5c, type: 3}
   - {fileID: 7232922119856166567, guid: ebf4b32796b3a5f4db2aeffb93f335f0, type: 3}
   swapTime: 0.5
-  m_clickedTile: {fileID: 0}
-  targetTile: {fileID: 0}
   startingTiles:
-  - tilePrefab: {fileID: 3533600914859224216, guid: 223b57121dc8568478a8e0c773754bfc, type: 3}
-    x: 2
-    y: 2
-    z: -1
-  - tilePrefab: {fileID: 3533600914859224216, guid: 223b57121dc8568478a8e0c773754bfc, type: 3}
+  - tilePrefab: {fileID: 3533600914859224216, guid: 36d2cd617e1693248988cf837ed48b5b, type: 3}
     x: 5
     y: 6
     z: -1

@@ -20,7 +20,7 @@ public class GamePiece : MonoBehaviour
         EaseIn,    
         SmoothStep,
         SmootherStep
-    };
+    }
 
     public MatchValue matchValue;
     public enum MatchValue
@@ -101,7 +101,7 @@ public class GamePiece : MonoBehaviour
             elapsedTime += Time.deltaTime;
 
             // calculate the Lerp value
-            float t = Mathf.Clamp(elapsedTime / timeToMove, 0, 1);
+            float t = Mathf.Clamp(elapsedTime / timeToMove, 0f, 1f);
 
             // interpolate
             switch (interpolation)
@@ -119,8 +119,6 @@ public class GamePiece : MonoBehaviour
                     break;
                 case InterpType.SmootherStep:
                     t = t * t * t * (t * (t * 6 - 15) + 10);
-                    break;
-                default:
                     break;
             }
 
